@@ -1,0 +1,17 @@
+<% content_for :title, "New subscription" %>
+
+<h1>New subscription</h1>
+
+<%= render "form", subscription: @subscription %>
+
+<br>
+
+<% if user_signed_in? && current_user.client? && (!current_user.subscription || current_user.subscription.status != 'active') %>
+  <%= button_to 'Subscribe for €10/month', subscriptions_path, method: :post %>
+<% elsif user_signed_in? && current_user.client? %>
+  <p>You are subscribed!</p>
+<% end %>
+
+<div>
+  <%= link_to "Back to subscriptions", subscriptions_path %>
+</div>

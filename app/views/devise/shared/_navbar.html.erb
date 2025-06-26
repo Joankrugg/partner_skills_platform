@@ -1,0 +1,21 @@
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <% if user_signed_in? %>
+      <% if current_user.partner? %>
+        <li><%= link_to 'My Services', services_path %></li>
+        <li><%= link_to 'My Availabilities', availabilities_path %></li>
+        <!-- Add more partner-specific links here -->
+      <% elsif current_user.client? %>
+        <li><%= link_to 'Book a Service', bookings_path %></li>
+        <li><%= link_to 'My Subscriptions', subscriptions_path %></li>
+        <!-- Add more client-specific links here -->
+      <% end %>
+      <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <li><%= link_to 'Login', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</nav>

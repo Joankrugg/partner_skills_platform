@@ -1,0 +1,36 @@
+<%= form_with(model: subscription, class: "space-y-6 bg-white p-6 rounded-xl shadow-md") do |form| %>
+  <% if subscription.errors.any? %>
+    <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded text-red-700">
+      <h2 class="font-semibold mb-2"><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+      <ul class="list-disc pl-5">
+        <% subscription.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, class: "block font-medium text-gray-700 mb-1" %>
+    <%= form.text_field :user_id, class: "w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2" %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, class: "block font-medium text-gray-700 mb-1" %>
+    <%= form.date_field :start_date, class: "w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2" %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, class: "block font-medium text-gray-700 mb-1" %>
+    <%= form.date_field :end_date, class: "w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2" %>
+  </div>
+
+  <div>
+    <%= form.label :status, class: "block font-medium text-gray-700 mb-1" %>
+    <%= form.text_field :status, class: "w-full rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 p-2" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow transition" %>
+  </div>
+<% end %>
