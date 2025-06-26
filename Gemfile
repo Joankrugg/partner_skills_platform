@@ -71,3 +71,5 @@ gem "devise", "~> 4.9"
 gem "spring", "~> 4.3"
 
 gem "tailwindcss-rails", "~> 4.2"
+
+gem 'rails_12factor', group: :production
